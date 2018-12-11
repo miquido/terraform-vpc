@@ -2,7 +2,7 @@ resource "aws_vpc" "main" {
   cidr_block = "${var.cidr}"
   tags = "${merge(var.common_tags,
   map(
-      "Name",  "${var.project_name} VPC - stage"
+      "Name",  "${var.project_name} VPC"
   )
   )}"
 }
@@ -20,7 +20,7 @@ resource "aws_subnet" "public_subnets" {
   map_public_ip_on_launch = true
   tags                    = "${merge(var.common_tags,
   map(
-      "Name",  "${format("${var.project_name} public subnet %03d - stage", count.index + 1)}"
+      "Name",  "${format("${var.project_name} public subnet %03d", count.index + 1)}"
   )
   )}"
 }
@@ -32,7 +32,7 @@ resource "aws_subnet" "private_subnets" {
   availability_zone = "${var.region}${element(var.azs, count.index)}"
   tags              = "${merge(var.common_tags,
   map(
-      "Name",  "${format("${var.project_name} private subnet %03d - stage", count.index + 1)}"
+      "Name",  "${format("${var.project_name} private subnet %03d", count.index + 1)}"
   )
   )}"
 }
