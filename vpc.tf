@@ -1,9 +1,5 @@
-variable "subnets" {
-  default = 2
-}
-
 resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "${var.cidr}"
   tags = "${merge(var.common_tags,
   map(
       "Name",  "${var.project_name} VPC - stage"
@@ -19,7 +15,7 @@ resource "aws_internet_gateway" "gw" {
 resource "aws_subnet" "public_subnets" {
   count                   = "${var.subnets}"
   vpc_id                  = "${aws_vpc.main.id}"
-  cidr_block              = "10.0.${count.index + 4}.0/24"
+  cidr_block              = "${cidrsubnet("10.0.0.0/16",8, count.index)}"
   availability_zone       = "${var.region}${element(var.azs, count.index)}"
   map_public_ip_on_launch = true
   tags                    = "${merge(var.common_tags,
@@ -32,7 +28,7 @@ resource "aws_subnet" "public_subnets" {
 resource "aws_subnet" "private_subnets" {
   count             = "${var.subnets}"
   vpc_id            = "${aws_vpc.main.id}"
-  cidr_block        = "10.0.${count.index + 1}.0/24"
+  cidr_block        = "${cidrsubnet("10.0.0.0/16",8, count.index + var.subnets)}"
   availability_zone = "${var.region}${element(var.azs, count.index)}"
   tags              = "${merge(var.common_tags,
   map(
