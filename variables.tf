@@ -3,6 +3,11 @@ variable "region" {
   description = "AWS region"
 }
 
+variable "nat" {
+  type = "string"
+  description = "Defines whether create NAT gateway for private subnet to reach internet (true/false)"
+}
+
 variable "azs" {
   type = "list"
   default = ["a","b","c"]

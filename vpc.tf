@@ -39,11 +39,13 @@ resource "aws_subnet" "private_subnets" {
 
 resource "aws_eip" "nat" {
   vpc = true
+  count = "${var.nat}"
 }
 
 resource "aws_nat_gateway" "nat_gw" {
   allocation_id = "${aws_eip.nat.id}"
   subnet_id     = "${aws_subnet.public_subnets.0.id}"
+  count = "${var.nat}"
 }
 
 resource "aws_default_route_table" "public" {
@@ -64,6 +66,7 @@ resource "aws_route" "private" {
   route_table_id          = "${aws_route_table.private.id}"
   destination_cidr_block  = "0.0.0.0/0"
   nat_gateway_id          = "${aws_nat_gateway.nat_gw.id}"
+  count = "${var.nat}"
 }
 
 resource "aws_route_table_association" "public" {
