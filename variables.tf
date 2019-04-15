@@ -1,35 +1,43 @@
-variable "region" {
-  type = "string"
-  description = "AWS region"
+variable "environment" {
+  default     = ""
+  description = "Environment name"
 }
 
-variable "nat" {
-  type = "string"
-  description = "Defines whether create NAT gateway for private subnet to reach internet (true/false)"
+variable "name" {
+  type        = "string"
+  description = "Resource common name"
 }
 
-variable "azs" {
-  type = "list"
-  default = ["a","b","c"]
-  description = "Defines available availibity, array of letters appended to region name"
+variable "project" {
+  type        = "string"
+  description = "Account/Project Name"
 }
 
-variable "subnets" {
-  default = 2
-  description = "Defines how many subnets to create (public and private), should not be more that azs"
+variable "tags" {
+  type        = "map"
+  default     = {}
+  description = "Tags to apply on repository"
 }
 
 variable "cidr" {
-  default = "10.0.0.0/16"
-  description = "VPC Main CIDR, between /16 and /28"
+  type        = "string"
+  default     = "10.0.0.0/16"
+  description = "CIDR for the VPC"
 }
 
-variable "project_name" {
-    type = "string"
-    description = "Project name, added to names of resources"
+variable "region" {
+  type        = "string"
+  description = "AWS Region"
 }
 
-variable "common_tags" {
-    type = "map"
-    description = "Tags to be attached to every possible resource"
+variable "azs" {
+  type        = "list"
+  default     = []
+  description = "List of Availability Zones where subnets will be created"
+}
+
+variable "nat_gateway_mode" {
+  type        = "string"
+  description = "Flag to enable/disable NAT gateways for private subnets. Possible values: off, standard, single"
+  default     = "standard"
 }

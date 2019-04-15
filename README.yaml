@@ -1,0 +1,13 @@
+name: miquido-vpc
+bitbucket_repo: miquido/terraform-vpc
+badges: []
+related: []
+description: |-
+  Provides AWS VPC with Private Subnets and optional NAT Gateways.
+usage: ""
+include:
+  - "docs/targets.md"
+  - "docs/terraform.md"
+contributors:
+  - name: "Konrad Obal"
+    github: "k911"
