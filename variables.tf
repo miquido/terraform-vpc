@@ -41,3 +41,9 @@ variable "nat_gateway_mode" {
   description = "Flag to enable/disable NAT gateways for private subnets. Possible values: off, standard, single"
   default     = "standard"
 }
+
+variable "enable_vpc_private_link" {
+  type        = "string"
+  description = "Controls whether to create VPC Endpoints regarding AWS S3/ECR services in managed VPC"
+  default     = "false"
+}
