@@ -4,7 +4,7 @@
 |------|-------------|:----:|:-----:|:-----:|
 | azs | List of Availability Zones where subnets will be created | list | `<list>` | no |
 | cidr | CIDR for the VPC | string | `10.0.0.0/16` | no |
-| enable_vpc_private_link | Controls whether to create VPC Endpoints regarding AWS S3/ECR services in managed VPC | string | `false` | no |
+| enable_ecs_fargate_private_link | Controls whether to create VPC Endpoints regarding AWS ECS with Fargate services in managed VPC | string | `false` | no |
 | environment | Environment name | string | `` | no |
 | name | Resource common name | string | - | yes |
 | nat_gateway_mode | Flag to enable/disable NAT gateways for private subnets. Possible values: off, standard, single | string | `standard` | no |

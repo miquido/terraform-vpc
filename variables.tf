@@ -42,8 +42,8 @@ variable "nat_gateway_mode" {
   default     = "standard"
 }
 
-variable "enable_vpc_private_link" {
+variable "enable_ecs_fargate_private_link" {
   type        = "string"
-  description = "Controls whether to create VPC Endpoints regarding AWS S3/ECR services in managed VPC"
+  description = "Controls whether to create VPC Endpoints regarding AWS ECS with Fargate services in managed VPC"
   default     = "false"
 }
