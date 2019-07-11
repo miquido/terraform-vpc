@@ -58,9 +58,19 @@ variable "subnet_type_tag_value_format" {
   type        = "string"
 }
 
+variable "public_subnet_count" {
+  default     = "0"
+  description = "Sets the number of deployed public subnets (used for secondary resources as a workaround to terraform issue). When set to 0 it equals number of Availability Zones."
+}
+
+variable "private_subnet_count" {
+  default     = "0"
+  description = "Sets the number of deployed private subnets (used for secondary resources as a workaround to terraform issue). When set to 0 it equals number of Availability Zones."
+}
+
 variable "max_subnet_count" {
   default     = 0
-  description = "Sets the maximum amount of subnets to deploy.  0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region"
+  description = "Sets the maximum amount of subnets to deploy. 0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region"
 }
 
 variable "public_network_acl_id" {

@@ -35,5 +35,4 @@ resource "aws_route" "default" {
   route_table_id         = "${element(module.dynamic-subnets.private_route_table_ids, count.index)}"
   nat_gateway_id         = "${element(aws_nat_gateway.single-nat.*.id, 0)}"
   destination_cidr_block = "0.0.0.0/0"
-  depends_on             = ["module.dynamic-subnets"]
 }
