@@ -58,9 +58,19 @@ variable "subnet_type_tag_value_format" {
   type        = "string"
 }
 
+variable "public_subnet_count" {
+  default     = 0
+  description = "Sets the number of deployed public subnets (used for secondary modules as a workaround). After initial deployment it should be automatically computed."
+}
+
+variable "private_subnet_count" {
+  default     = 0
+  description = "Sets the number of deployed public subnets (used for secondary modules as a workaround). After initial deployment it should be automatically computed."
+}
+
 variable "max_subnet_count" {
   default     = 0
-  description = "Sets the maximum amount of subnets to deploy.  0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region"
+  description = "Sets the maximum amount of subnets to deploy. 0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region"
 }
 
 variable "public_network_acl_id" {
