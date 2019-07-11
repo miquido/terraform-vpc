@@ -50,8 +50,8 @@ locals {
   nat_instance_enabled       = "${lookup(local.nat[var.nat_type], "nat_instance_enabled")}"
   nat_gateway_single_enabled = "${lookup(local.nat[var.nat_type], "nat_gateway_single_enabled")}"
 
-  public_subnets_count  = "${length(module.dynamic-subnets.public_route_table_ids)}"
-  private_subnets_count = "${length(module.dynamic-subnets.private_route_table_ids)}"
+  public_subnets_count  = "${var.public_subnet_count == "0" ? length(module.dynamic-subnets.public_route_table_ids) : var.public_subnet_count}"
+  private_subnets_count = "${var.private_subnet_count == "0" ? length(module.dynamic-subnets.private_route_table_ids) : var.private_subnet_count}"
 }
 
 module "dynamic-subnets" {
