@@ -1,12 +1,5 @@
-provider "aws" {}
-
 module "vpc" {
-  source = "git@github.com:cloudposse/terraform-aws-vpc?ref=0.4.1"
-
-  providers = {
-    aws = "aws"
-  }
-
+  source                         = "git@github.com:cloudposse/terraform-aws-vpc?ref=tags/0.4.1"
   name                           = "${var.name}"
   namespace                      = "${var.project}"
   stage                          = "${var.environment}"
@@ -55,12 +48,7 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source = "git@github.com:cloudposse/terraform-aws-dynamic-subnets?ref=0.11.0"
-
-  providers = {
-    aws = "aws"
-  }
-
+  source                       = "git@github.com:k911/terraform-aws-dynamic-subnets?ref=tags/0.11.1"
   name                         = "${var.name}"
   namespace                    = "${var.project}"
   stage                        = "${var.environment}"
