@@ -1,0 +1,18 @@
+name: miquido-terraform-
+bitbucket_repo: miquido/terraform-
+badges: []
+related: []
+# description: ""
+# usage: |-
+#   ```hcl
+#   module {
+#     source = "git::ssh://git@bitbucket.org/miquid-terraform-.git?ref=master"
+#     ...
+#   }
+#   ```
+include:
+  - "docs/terraform.md"
+  - "docs/targets.md"
+contributors:
+  - name: "Konrad Obal"
+    github: "k911"
