@@ -13,8 +13,8 @@ BitBucket Repository: https://bitbucket.org/miquido/terraform-vpc
 ### With single NAT gateway
 
 ```hcl
-  module "vpc" {
-  source                          = "git::ssh://git@bitbucket.org/miquido/terraform-vpc.git?ref=4207fdba3be6cfb23f76517d386c34c4d2cbb0a1"
+module "vpc" {
+  source                          = "git::ssh://git@bitbucket.org/miquido/terraform-vpc.git?ref=master"
   name                            = "main"
   project                         = "example"
   environment                     = "dev"
