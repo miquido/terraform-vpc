@@ -38,24 +38,7 @@ resource "aws_vpc_endpoint" "ecr-dkr" {
   service_name        = data.aws_vpc_endpoint_service.ecr-dkr.service_name
   vpc_endpoint_type   = "Interface"
   private_dns_enabled = true
-
-  # TF-UPGRADE-TODO: In Terraform v0.10 and earlier, it was sometimes necessary to
-  # force an interpolation expression to be interpreted as a list by wrapping it
-  # in an extra set of list brackets. That form was supported for compatibility in
-  # v0.11, but is no longer supported in Terraform v0.12.
-  #
-  # If the expression in the following list itself returns a list, remove the
-  # brackets to avoid interpretation as a list of lists. If the expression
-  # returns a single list item then leave it as-is and remove this TODO comment.
-  security_group_ids = [module.vpc.vpc_default_security_group_id]
-  # TF-UPGRADE-TODO: In Terraform v0.10 and earlier, it was sometimes necessary to
-  # force an interpolation expression to be interpreted as a list by wrapping it
-  # in an extra set of list brackets. That form was supported for compatibility in
-  # v0.11, but is no longer supported in Terraform v0.12.
-  #
-  # If the expression in the following list itself returns a list, remove the
-  # brackets to avoid interpretation as a list of lists. If the expression
-  # returns a single list item then leave it as-is and remove this TODO comment.
-  subnet_ids = [module.dynamic-subnets.private_subnet_ids]
+  security_group_ids  = [module.vpc.vpc_default_security_group_id]
+  subnet_ids          = module.dynamic-subnets.private_subnet_ids
 }
 
