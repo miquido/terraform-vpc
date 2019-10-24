@@ -53,16 +53,6 @@ variable "subnet_type_tag_value_format" {
   type        = string
 }
 
-variable "public_subnet_count" {
-  default     = "0"
-  description = "Sets the number of deployed public subnets (used for secondary resources as a workaround to terraform issue). When set to 0 it equals number of Availability Zones."
-}
-
-variable "private_subnet_count" {
-  default     = "0"
-  description = "Sets the number of deployed private subnets (used for secondary resources as a workaround to terraform issue). When set to 0 it equals number of Availability Zones."
-}
-
 variable "max_subnet_count" {
   default     = 0
   description = "Sets the maximum amount of subnets to deploy. 0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region"
@@ -87,6 +77,18 @@ variable "enable_ecs_fargate_private_link" {
   type        = string
   description = "Controls whether to create VPC Endpoints regarding AWS ECS with Fargate services in managed VPC"
   default     = "false"
+}
+
+variable "vpc_main_security_group_allow_self_ingress" {
+  type        = bool
+  default     = true
+  description = "Add rule to main security group that allows all ingress traffic from the same group"
+}
+
+variable "vpc_main_security_group_allow_all_egress" {
+  type        = bool
+  default     = true
+  description = "Add rule to main security group that allows all egress traffic"
 }
 
 variable "instance_tenancy" {

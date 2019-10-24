@@ -25,6 +25,11 @@ output "vpc_main_route_table_id" {
   description = "The ID of the main route table associated with this VPC"
 }
 
+output "vpc_main_security_group_id" {
+  value       = aws_security_group.main.id
+  description = "The ID of the main security group associated with this VPC"
+}
+
 output "vpc_default_route_table_id" {
   value       = module.vpc.vpc_default_route_table_id
   description = "The ID of the route table created by default on VPC creation"

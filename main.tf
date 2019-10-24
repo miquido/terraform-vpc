@@ -39,9 +39,6 @@ locals {
   nat_gateway_enabled        = local.nat[var.nat_type]["nat_gateway_enabled"]
   nat_instance_enabled       = local.nat[var.nat_type]["nat_instance_enabled"]
   nat_gateway_single_enabled = local.nat[var.nat_type]["nat_gateway_single_enabled"]
-
-  public_subnets_count  = var.public_subnet_count == "0" ? length(var.azs) : var.public_subnet_count
-  private_subnets_count = var.private_subnet_count == "0" ? length(var.azs) : var.private_subnet_count
 }
 
 module "dynamic-subnets" {
@@ -65,3 +62,42 @@ module "dynamic-subnets" {
   tags                         = var.tags
 }
 
+module "label" {
+  source    = "git::https://github.com/cloudposse/terraform-terraform-label?ref=tags/0.4.0"
+  name      = var.name
+  namespace = var.project
+  stage     = var.environment
+  tags      = var.tags
+}
+
+resource "aws_security_group" "main" {
+  name        = module.label.id
+  description = "VPC Main Security Group - ${module.label.id}"
+  vpc_id      = module.vpc.vpc_id
+  tags = merge({
+    Name = module.label.id
+  }, var.tags)
+}
+
+resource "aws_security_group_rule" "default-sg-allow-self-ingress" {
+  count = var.vpc_main_security_group_allow_self_ingress ? 1 : 0
+
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 65535
+  protocol          = "all"
+  self              = true
+  security_group_id = aws_security_group.main.id
+}
+
+resource "aws_security_group_rule" "default-sg-allow-all-egress" {
+  count = var.vpc_main_security_group_allow_all_egress ? 1 : 0
+
+  type              = "egress"
+  from_port         = 0
+  to_port           = 65535
+  protocol          = "all"
+  cidr_blocks       = ["0.0.0.0/0"]
+  ipv6_cidr_blocks  = ["::/0"]
+  security_group_id = aws_security_group.main.id
+}
