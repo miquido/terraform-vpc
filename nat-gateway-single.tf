@@ -1,5 +1,5 @@
 resource "aws_eip" "single-nat" {
-  count = local.nat_gateway_single_enabled == "true" ? 1 : 0
+  count = local.nat_gateway_single_enabled ? 1 : 0
 
   vpc  = true
   tags = module.label.tags
@@ -10,7 +10,7 @@ resource "aws_eip" "single-nat" {
 }
 
 resource "aws_nat_gateway" "single-nat" {
-  count = local.nat_gateway_single_enabled == "true" ? 1 : 0
+  count = local.nat_gateway_single_enabled ? 1 : 0
 
   allocation_id = element(aws_eip.single-nat.*.id, count.index)
   subnet_id     = element(module.dynamic-subnets.public_subnet_ids, count.index)
@@ -28,4 +28,3 @@ resource "aws_route" "default" {
   nat_gateway_id         = element(aws_nat_gateway.single-nat.*.id, 0)
   destination_cidr_block = "0.0.0.0/0"
 }
-

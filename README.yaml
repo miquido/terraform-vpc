@@ -17,7 +17,7 @@ usage: |-
     tags                            = var.tags
     azs                             = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
     nat_type                        = "gateway-single"
-    enable_ecs_fargate_private_link = "false"
+    enable_ecs_fargate_private_link = false
   }
   ```
 

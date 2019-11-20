@@ -21,7 +21,7 @@ module "vpc" {
   tags                            = var.tags
   azs                             = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
   nat_type                        = "gateway-single"
-  enable_ecs_fargate_private_link = "false"
+  enable_ecs_fargate_private_link = false
 }
 ```
 
@@ -33,7 +33,7 @@ Available targets:
   help                                Help screen
   help/all                            Display help for all targets
   help/short                          This help short screen
-  lint                                Lint terraform code
+  lint                                Lint Terraform code
 
 ```
 ## Inputs
@@ -42,11 +42,11 @@ Available targets:
 |------|-------------|:----:|:-----:|:-----:|
 | azs | List of Availability Zones where subnets will be created | list(string) | `<list>` | no |
 | cidr | CIDR for the VPC | string | `10.0.0.0/16` | no |
-| enable_ecs_fargate_private_link | Controls whether to create VPC Endpoints regarding AWS ECS with Fargate services in managed VPC | string | `false` | no |
+| enable_ecs_fargate_private_link | Controls whether to create VPC Endpoints regarding AWS ECS with Fargate services in managed VPC | bool | `false` | no |
 | environment | Environment name | string | `` | no |
 | instance_tenancy | A tenancy option for instances launched into the VPC | string | `default` | no |
-| map_public_ip_on_launch | Instances launched into a public subnet should be assigned a public IP address | string | `true` | no |
-| max_subnet_count | Sets the maximum amount of subnets to deploy. 0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region | string | `0` | no |
+| map_public_ip_on_launch | Instances launched into a public subnet should be assigned a public IP address | bool | `true` | no |
+| max_subnet_count | Sets the maximum amount of subnets to deploy. 0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region | number | `0` | no |
 | name | Resource common name | string | - | yes |
 | nat_instance_type | NAT Instance type | string | `t3.micro` | no |
 | nat_type | Configure deployment of NAT instances/gateways for private subnets. Possible values are: gateway-per-az, gateway-single, instance-per-az and off. | string | `gateway-per-az` | no |

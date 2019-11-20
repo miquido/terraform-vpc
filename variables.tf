@@ -1,5 +1,6 @@
 variable "environment" {
   default     = ""
+  type        = string
   description = "Environment name"
 }
 
@@ -33,50 +34,56 @@ variable "azs" {
 
 variable "nat_type" {
   type        = string
-  description = "Configure deployment of NAT instances/gateways for private subnets. Possible values are: gateway-per-az, gateway-single, instance-per-az and off."
   default     = "gateway-per-az"
+  description = "Configure deployment of NAT instances/gateways for private subnets. Possible values are: gateway-per-az, gateway-single, instance-per-az and off."
 }
 
 variable "nat_instance_type" {
-  description = "NAT Instance type"
+  type        = string
   default     = "t3.micro"
+  description = "NAT Instance type"
 }
 
 variable "subnet_type_tag_key" {
+  type        = string
   default     = "miquido.com/subnet/type"
   description = "Key for subnet type tag to provide information about the type of subnets, e.g. `cpco.io/subnet/type=private` or `cpco.io/subnet/type=public`"
 }
 
 variable "subnet_type_tag_value_format" {
+  type        = string
   default     = "%s"
   description = "This is using the format interpolation symbols to allow the value of the subnet_type_tag_key to be modified."
-  type        = string
 }
 
 variable "max_subnet_count" {
+  type        = number
   default     = 0
   description = "Sets the maximum amount of subnets to deploy. 0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region"
 }
 
 variable "public_network_acl_id" {
+  type        = string
   default     = ""
   description = "Network ACL ID that will be added to public subnets. If empty, a new ACL will be created"
 }
 
 variable "private_network_acl_id" {
-  description = "Network ACL ID that will be added to private subnets. If empty, a new ACL will be created"
+  type        = string
   default     = ""
+  description = "Network ACL ID that will be added to private subnets. If empty, a new ACL will be created"
 }
 
 variable "map_public_ip_on_launch" {
-  default     = "true"
+  type        = bool
+  default     = true
   description = "Instances launched into a public subnet should be assigned a public IP address"
 }
 
 variable "enable_ecs_fargate_private_link" {
-  type        = string
+  type        = bool
+  default     = false
   description = "Controls whether to create VPC Endpoints regarding AWS ECS with Fargate services in managed VPC"
-  default     = "false"
 }
 
 variable "vpc_main_security_group_allow_self_ingress" {
@@ -92,7 +99,8 @@ variable "vpc_main_security_group_allow_all_egress" {
 }
 
 variable "instance_tenancy" {
-  description = "A tenancy option for instances launched into the VPC"
+  type        = string
   default     = "default"
+  description = "A tenancy option for instances launched into the VPC"
 }
 

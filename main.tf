@@ -1,38 +1,38 @@
 module "vpc" {
-  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.8.0"
+  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.8.1"
   name                           = var.name
   namespace                      = var.project
   stage                          = var.environment
   cidr_block                     = var.cidr
   tags                           = var.tags
   instance_tenancy               = var.instance_tenancy
-  enable_dns_hostnames           = "true"
-  enable_dns_support             = "true"
-  enable_classiclink             = "false"
-  enable_classiclink_dns_support = "false"
+  enable_dns_hostnames           = true
+  enable_dns_support             = true
+  enable_classiclink             = false
+  enable_classiclink_dns_support = false
 }
 
 locals {
   nat = {
     "gateway-per-az" = {
-      nat_gateway_enabled        = "true"
-      nat_instance_enabled       = "false"
-      nat_gateway_single_enabled = "false"
+      nat_gateway_enabled        = true
+      nat_instance_enabled       = false
+      nat_gateway_single_enabled = false
     }
     "gateway-single" = {
-      nat_gateway_enabled        = "false"
-      nat_instance_enabled       = "false"
-      nat_gateway_single_enabled = "true"
+      nat_gateway_enabled        = false
+      nat_instance_enabled       = false
+      nat_gateway_single_enabled = true
     }
     "instance-per-az" = {
-      nat_gateway_enabled        = "false"
-      nat_instance_enabled       = "true"
-      nat_gateway_single_enabled = "false"
+      nat_gateway_enabled        = false
+      nat_instance_enabled       = true
+      nat_gateway_single_enabled = false
     }
     "off" = {
-      nat_gateway_enabled        = "false"
-      nat_instance_enabled       = "false"
-      nat_gateway_single_enabled = "false"
+      nat_gateway_enabled        = false
+      nat_instance_enabled       = false
+      nat_gateway_single_enabled = false
     }
   }
 
@@ -42,7 +42,7 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.16.0"
+  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.17.0"
   name                         = var.name
   namespace                    = var.project
   stage                        = var.environment
