@@ -104,3 +104,14 @@ variable "instance_tenancy" {
   description = "A tenancy option for instances launched into the VPC"
 }
 
+variable "private_subnets_additional_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags to be added to private subnets"
+}
+
+variable "public_subnets_additional_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Additional tags to be added to public subnets"
+}

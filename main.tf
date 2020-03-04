@@ -42,7 +42,7 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.17.0"
+  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.19.0"
   name                         = var.name
   namespace                    = var.project
   stage                        = var.environment
@@ -60,6 +60,9 @@ module "dynamic-subnets" {
   private_network_acl_id       = var.private_network_acl_id
   map_public_ip_on_launch      = var.map_public_ip_on_launch
   tags                         = var.tags
+
+  public_subnets_additional_tags  = var.public_subnets_additional_tags
+  private_subnets_additional_tags = var.private_subnets_additional_tags
 }
 
 module "label" {

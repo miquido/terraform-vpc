@@ -13,8 +13,10 @@
 | nat_instance_type | NAT Instance type | string | `t3.micro` | no |
 | nat_type | Configure deployment of NAT instances/gateways for private subnets. Possible values are: gateway-per-az, gateway-single, instance-per-az and off. | string | `gateway-per-az` | no |
 | private_network_acl_id | Network ACL ID that will be added to private subnets. If empty, a new ACL will be created | string | `` | no |
+| private_subnets_additional_tags | Additional tags to be added to private subnets | map(string) | `<map>` | no |
 | project | Account/Project Name | string | - | yes |
 | public_network_acl_id | Network ACL ID that will be added to public subnets. If empty, a new ACL will be created | string | `` | no |
+| public_subnets_additional_tags | Additional tags to be added to public subnets | map(string) | `<map>` | no |
 | subnet_type_tag_key | Key for subnet type tag to provide information about the type of subnets, e.g. `cpco.io/subnet/type=private` or `cpco.io/subnet/type=public` | string | `miquido.com/subnet/type` | no |
 | subnet_type_tag_value_format | This is using the format interpolation symbols to allow the value of the subnet_type_tag_key to be modified. | string | `%s` | no |
 | tags | Tags to apply on repository | map(string) | `<map>` | no |
