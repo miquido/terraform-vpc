@@ -1,5 +1,5 @@
 module "vpc" {
-  source                         = "git::git@github.com:cloudposse/terraform-aws-vpc.git?ref=tags/0.18.1"
+  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.18.2"
   name                           = var.name
   namespace                      = var.project
   stage                          = var.environment
@@ -42,7 +42,7 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source                       = "git::git@github.com:cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.32.0"
+  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.34.0"
   name                         = var.name
   namespace                    = var.project
   stage                        = var.environment
@@ -66,7 +66,7 @@ module "dynamic-subnets" {
 }
 
 module "label" {
-  source    = "git::git@github.com:cloudposse/terraform-terraform-label?ref=tags/0.5.0"
+  source    = "git::https://github.com/cloudposse/terraform-terraform-label?ref=tags/0.5.1"
   name      = var.name
   namespace = var.project
   stage     = var.environment
