@@ -13,7 +13,7 @@ resource "aws_vpc_endpoint" "s3" {
   vpc_endpoint_type   = "Gateway"
   private_dns_enabled = false
   tags                = var.tags
-  route_table_ids     = [module.vpc.vpc_main_route_table_id]
+  route_table_ids     = flatten([module.vpc.vpc_main_route_table_id, module.dynamic-subnets.public_route_table_ids, module.dynamic-subnets.private_route_table_ids])
 
   policy = jsonencode({
     Version = "2012-10-17"
