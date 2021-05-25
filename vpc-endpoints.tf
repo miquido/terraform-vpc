@@ -8,24 +8,26 @@ data "aws_vpc_endpoint_service" "s3" {
 }
 
 resource "aws_vpc_endpoint" "s3" {
-  count = var.enable_ecs_fargate_private_link ? 1 : 0
+  vpc_id              = module.vpc.vpc_id
+  service_name        = data.aws_vpc_endpoint_service.s3.service_name
+  vpc_endpoint_type   = "Gateway"
+  private_dns_enabled = false
+  tags                = var.tags
+  route_table_ids     = [module.vpc.vpc_main_route_table_id]
 
-  vpc_id       = module.vpc.vpc_id
-  service_name = data.aws_vpc_endpoint_service.s3.service_name
-}
-
-resource "aws_vpc_endpoint_route_table_association" "private-s3" {
-  count = var.enable_ecs_fargate_private_link ? length(module.dynamic-subnets.private_route_table_ids) : 0
-
-  vpc_endpoint_id = aws_vpc_endpoint.s3[0].id
-  route_table_id  = element(module.dynamic-subnets.private_route_table_ids, count.index)
-}
-
-resource "aws_vpc_endpoint_route_table_association" "public-s3" {
-  count = var.enable_ecs_fargate_private_link ? length(module.dynamic-subnets.public_route_table_ids) : 0
-
-  vpc_endpoint_id = aws_vpc_endpoint.s3[0].id
-  route_table_id  = element(module.dynamic-subnets.public_route_table_ids, count.index)
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "s3:*",
+        ]
+        Effect    = "Allow"
+        Principal = "*"
+        Resource  = "*"
+      },
+    ]
+  })
 }
 
 data "aws_vpc_endpoint_service" "ecr-dkr" {
@@ -42,4 +44,3 @@ resource "aws_vpc_endpoint" "ecr-dkr" {
   security_group_ids  = [aws_security_group.main.id]
   subnet_ids          = module.dynamic-subnets.private_subnet_ids
 }
-
