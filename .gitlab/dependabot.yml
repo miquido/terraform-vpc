@@ -11,5 +11,4 @@ updates:
       - "tomasz.sojka"
     schedule:
       interval: "daily"
-      time: "8:33"
     auto-merge: true
