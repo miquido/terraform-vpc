@@ -19,9 +19,9 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_dynamic-subnets"></a> [dynamic-subnets](#module\_dynamic-subnets) | git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.39.0 |  |
-| <a name="module_label"></a> [label](#module\_label) | git::https://github.com/cloudposse/terraform-terraform-label?ref=tags/0.8.0 |  |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.20.2 |  |
+| <a name="module_dynamic-subnets"></a> [dynamic-subnets](#module\_dynamic-subnets) | git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git | tags/0.39.3 |
+| <a name="module_label"></a> [label](#module\_label) | git::https://github.com/cloudposse/terraform-terraform-label | tags/0.8.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/cloudposse/terraform-aws-vpc.git | tags/0.26.0 |
 
 ## Resources
 
@@ -57,6 +57,7 @@
 | <a name="input_project"></a> [project](#input\_project) | Account/Project Name | `string` | n/a | yes |
 | <a name="input_public_network_acl_id"></a> [public\_network\_acl\_id](#input\_public\_network\_acl\_id) | Network ACL ID that will be added to public subnets. If empty, a new ACL will be created | `string` | `""` | no |
 | <a name="input_public_subnets_additional_tags"></a> [public\_subnets\_additional\_tags](#input\_public\_subnets\_additional\_tags) | Additional tags to be added to public subnets | `map(string)` | `{}` | no |
+| <a name="input_security_group_enabled"></a> [security\_group\_enabled](#input\_security\_group\_enabled) | Whether to create default Security Group for VPC. | `bool` | `true` | no |
 | <a name="input_subnet_type_tag_key"></a> [subnet\_type\_tag\_key](#input\_subnet\_type\_tag\_key) | Key for subnet type tag to provide information about the type of subnets, e.g. `cpco.io/subnet/type=private` or `cpco.io/subnet/type=public` | `string` | `"miquido.com/subnet/type"` | no |
 | <a name="input_subnet_type_tag_value_format"></a> [subnet\_type\_tag\_value\_format](#input\_subnet\_type\_tag\_value\_format) | This is using the format interpolation symbols to allow the value of the subnet\_type\_tag\_key to be modified. | `string` | `"%s"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply on repository | `map(string)` | `{}` | no |

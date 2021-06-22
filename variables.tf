@@ -115,3 +115,9 @@ variable "public_subnets_additional_tags" {
   default     = {}
   description = "Additional tags to be added to public subnets"
 }
+
+variable "security_group_enabled" {
+  type        = bool
+  description = "Whether to create default Security Group for VPC."
+  default     = true
+}
