@@ -41,8 +41,13 @@ output "vpc_default_network_acl_id" {
 }
 
 output "vpc_default_security_group_id" {
-  value       = module.vpc.security_group_id
+  value       = module.vpc.vpc_default_security_group_id
   description = "The ID of the security group created by default on VPC creation"
+}
+
+output "vpc_security_group_id" {
+  value       = module.vpc.security_group_id
+  description = "Additional security group"
 }
 
 output "nat_gateway_ids" {

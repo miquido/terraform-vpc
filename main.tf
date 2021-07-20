@@ -11,6 +11,7 @@ module "vpc" {
   enable_classiclink             = false
   enable_classiclink_dns_support = false
   security_group_enabled         = var.security_group_enabled
+  security_group_rules           = var.security_group_rules
 }
 
 locals {
