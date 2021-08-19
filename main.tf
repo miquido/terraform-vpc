@@ -42,7 +42,7 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=tags/0.39.5"
+  source                       = "git::https://github.com/marekmoscichowski/terraform-aws-dynamic-subnets.git?ref=feat/ipv6"
   name                         = var.name
   namespace                    = var.project
   stage                        = var.environment
@@ -74,7 +74,7 @@ module "label" {
 }
 
 resource "aws_security_group" "main" {
-  name        = module.label.id
+  name        = "${var.project}-${var.environment}-default"
   description = "VPC Main Security Group - ${module.label.id}"
   vpc_id      = module.vpc.vpc_id
   tags = merge({
