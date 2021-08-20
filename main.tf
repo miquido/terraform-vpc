@@ -1,5 +1,5 @@
 module "vpc" {
-  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.27.0"
+  source                         = "git::https://github.com/marekmoscichowski/terraform-aws-vpc.git?ref=feat/egress_only_internet_gateway"
   name                           = var.name
   namespace                      = var.project
   stage                          = var.environment
@@ -42,13 +42,14 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source                       = "git::https://github.com/marekmoscichowski/terraform-aws-dynamic-subnets.git?ref=feat/ipv6"
+  source                       = "../terraform-aws-dynamic-subnets"
   name                         = var.name
   namespace                    = var.project
   stage                        = var.environment
   availability_zones           = var.azs
   vpc_id                       = module.vpc.vpc_id
   igw_id                       = module.vpc.igw_id
+  egress_only_igw_id           = module.vpc.egress_only_gw_id
   cidr_block                   = var.cidr
   nat_gateway_enabled          = local.nat_gateway_enabled
   nat_instance_enabled         = local.nat_instance_enabled
