@@ -80,6 +80,12 @@ variable "map_public_ip_on_launch" {
   description = "Instances launched into a public subnet should be assigned a public IP address"
 }
 
+variable "map_private_ipv6_on_launch" {
+  type        = bool
+  default     = false
+  description = "Instances launched into a private subnet should be assigned a IPv6 address"
+}
+
 variable "enable_ecs_fargate_private_link" {
   type        = bool
   default     = false

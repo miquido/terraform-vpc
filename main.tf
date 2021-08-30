@@ -42,14 +42,14 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source                       = "../terraform-aws-dynamic-subnets"
+  source                       = "git::https://github.com/marekmoscichowski/terraform-aws-dynamic-subnets.git?ref=feat/ipv6"
   name                         = var.name
   namespace                    = var.project
   stage                        = var.environment
   availability_zones           = var.azs
   vpc_id                       = module.vpc.vpc_id
   igw_id                       = module.vpc.igw_id
-  egress_only_igw_id           = module.vpc.egress_only_gw_id
+  egress_only_igw_id           = module.vpc.egress_only_igw_id
   cidr_block                   = var.cidr
   nat_gateway_enabled          = local.nat_gateway_enabled
   nat_instance_enabled         = local.nat_instance_enabled
@@ -60,6 +60,7 @@ module "dynamic-subnets" {
   public_network_acl_id        = var.public_network_acl_id
   private_network_acl_id       = var.private_network_acl_id
   map_public_ip_on_launch      = var.map_public_ip_on_launch
+  map_private_ipv6_on_launch   = var.map_private_ipv6_on_launch
   tags                         = var.tags
 
   public_subnets_additional_tags  = var.public_subnets_additional_tags
