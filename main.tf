@@ -1,5 +1,5 @@
 module "vpc" {
-  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.26.3"
+  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.27.0"
   name                           = var.name
   namespace                      = var.project
   stage                          = var.environment
@@ -10,8 +10,6 @@ module "vpc" {
   enable_dns_support             = true
   enable_classiclink             = false
   enable_classiclink_dns_support = false
-  security_group_enabled         = var.security_group_enabled
-  security_group_rules           = var.security_group_rules
 }
 
 locals {
