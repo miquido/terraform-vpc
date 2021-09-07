@@ -122,6 +122,12 @@ variable "security_group_enabled" {
   default     = true
 }
 
+variable "main_aws_security_group_description" {
+  type        = string
+  description = "Description of main security group"
+  default     = ""
+}
+
 variable "security_group_rules" {
   type = list(any)
   default = [

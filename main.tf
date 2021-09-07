@@ -77,7 +77,7 @@ module "label" {
 
 resource "aws_security_group" "main" {
   name        = module.label.id
-  description = "VPC Main Security Group - ${module.label.id}"
+  description = var.main_aws_security_group_description != "" ? var.main_aws_security_group_description : "VPC Main Security Group - ${module.label.id}"
   vpc_id      = module.vpc.vpc_id
   tags = merge({
     Name = module.label.id
