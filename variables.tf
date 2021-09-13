@@ -115,34 +115,3 @@ variable "public_subnets_additional_tags" {
   default     = {}
   description = "Additional tags to be added to public subnets"
 }
-
-variable "security_group_enabled" {
-  type        = bool
-  description = "Whether to create default Security Group for VPC."
-  default     = true
-}
-
-variable "main_aws_security_group_description" {
-  type        = string
-  description = "Description of main security group"
-  default     = ""
-}
-
-variable "security_group_rules" {
-  type = list(any)
-  default = [
-    {
-      type        = "egress"
-      from_port   = 0
-      to_port     = 65535
-      protocol    = "-1"
-      cidr_blocks = ["0.0.0.0/0"]
-      description = "Allow ALL egress traffic"
-    }
-  ]
-  description = <<-EOT
-    A list of maps of Security Group rules.
-    The values of map is fully complated with `aws_security_group_rule` resource.
-    To get more info see https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule .
-  EOT
-}
