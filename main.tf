@@ -1,5 +1,5 @@
 module "vpc" {
-  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.27.0"
+  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=tags/0.28.0"
   name                           = var.name
   namespace                      = var.project
   stage                          = var.environment
