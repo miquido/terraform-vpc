@@ -57,9 +57,9 @@ Available targets:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_dynamic-subnets"></a> [dynamic-subnets](#module\_dynamic-subnets) | git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git | tags/0.39.3 |
+| <a name="module_dynamic-subnets"></a> [dynamic-subnets](#module\_dynamic-subnets) | git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git | tags/0.39.8 |
 | <a name="module_label"></a> [label](#module\_label) | git::https://github.com/cloudposse/terraform-terraform-label | tags/0.8.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/cloudposse/terraform-aws-vpc.git | tags/0.26.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/cloudposse/terraform-aws-vpc.git | tags/0.28.1 |
 
 ## Resources
 
@@ -71,8 +71,12 @@ Available targets:
 | [aws_security_group.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.default-sg-allow-all-egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.default-sg-allow-self-ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
+| [aws_vpc_endpoint.cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint) | resource |
+| [aws_vpc_endpoint.ecr-api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint) | resource |
 | [aws_vpc_endpoint.ecr-dkr](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint) | resource |
 | [aws_vpc_endpoint.s3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_endpoint) | resource |
+| [aws_vpc_endpoint_service.cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc_endpoint_service) | data source |
+| [aws_vpc_endpoint_service.ecr-api](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc_endpoint_service) | data source |
 | [aws_vpc_endpoint_service.ecr-dkr](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc_endpoint_service) | data source |
 | [aws_vpc_endpoint_service.s3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc_endpoint_service) | data source |
 
@@ -95,7 +99,6 @@ Available targets:
 | <a name="input_project"></a> [project](#input\_project) | Account/Project Name | `string` | n/a | yes |
 | <a name="input_public_network_acl_id"></a> [public\_network\_acl\_id](#input\_public\_network\_acl\_id) | Network ACL ID that will be added to public subnets. If empty, a new ACL will be created | `string` | `""` | no |
 | <a name="input_public_subnets_additional_tags"></a> [public\_subnets\_additional\_tags](#input\_public\_subnets\_additional\_tags) | Additional tags to be added to public subnets | `map(string)` | `{}` | no |
-| <a name="input_security_group_enabled"></a> [security\_group\_enabled](#input\_security\_group\_enabled) | Whether to create default Security Group for VPC. | `bool` | `true` | no |
 | <a name="input_subnet_type_tag_key"></a> [subnet\_type\_tag\_key](#input\_subnet\_type\_tag\_key) | Key for subnet type tag to provide information about the type of subnets, e.g. `cpco.io/subnet/type=private` or `cpco.io/subnet/type=public` | `string` | `"miquido.com/subnet/type"` | no |
 | <a name="input_subnet_type_tag_value_format"></a> [subnet\_type\_tag\_value\_format](#input\_subnet\_type\_tag\_value\_format) | This is using the format interpolation symbols to allow the value of the subnet\_type\_tag\_key to be modified. | `string` | `"%s"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply on repository | `map(string)` | `{}` | no |
