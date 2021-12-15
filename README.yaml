@@ -1,5 +1,6 @@
-name: miquido-vpc
-bitbucket_repo: miquido/terraform-vpc
+name: terraform-vpc
+repos:
+  gitlab: miquido/terraform/terraform-vpc
 badges: []
 related: []
 description: |-
@@ -10,7 +11,7 @@ usage: |-
 
   ```hcl
   module "vpc" {
-    source                          = "git::ssh://git@bitbucket.org/miquido/terraform-vpc.git?ref=master"
+    source                          = "git::ssh://git@gitlab.com:miquido/terraform/terraform-vpc.git?ref=master"
     name                            = "main"
     project                         = "example"
     environment                     = "dev"
