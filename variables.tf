@@ -62,18 +62,6 @@ variable "max_subnet_count" {
   description = "Sets the maximum amount of subnets to deploy. 0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region"
 }
 
-variable "public_network_acl_id" {
-  type        = string
-  default     = ""
-  description = "Network ACL ID that will be added to public subnets. If empty, a new ACL will be created"
-}
-
-variable "private_network_acl_id" {
-  type        = string
-  default     = ""
-  description = "Network ACL ID that will be added to private subnets. If empty, a new ACL will be created"
-}
-
 variable "map_public_ip_on_launch" {
   type        = bool
   default     = true
@@ -114,4 +102,16 @@ variable "public_subnets_additional_tags" {
   type        = map(string)
   default     = {}
   description = "Additional tags to be added to public subnets"
+}
+
+variable "ipv4_enabled" {
+  type        = bool
+  description = "Set `true` to enable IPv4 addresses in the subnets"
+  default     = true
+}
+
+variable "ipv6_enabled" {
+  type        = bool
+  description = "Set `true` to enable IPv6 addresses in the subnets"
+  default     = false
 }

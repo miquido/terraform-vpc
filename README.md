@@ -58,9 +58,9 @@ Available targets:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_dynamic-subnets"></a> [dynamic-subnets](#module\_dynamic-subnets) | git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git | 1.0.0 |
+| <a name="module_dynamic-subnets"></a> [dynamic-subnets](#module\_dynamic-subnets) | git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git | 2.0.2 |
 | <a name="module_label"></a> [label](#module\_label) | git::https://github.com/cloudposse/terraform-terraform-label | 0.8.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/cloudposse/terraform-aws-vpc.git | 0.28.1 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/cloudposse/terraform-aws-vpc.git | 1.1.0 |
 
 ## Resources
 
@@ -90,6 +90,8 @@ Available targets:
 | <a name="input_enable_ecs_fargate_private_link"></a> [enable\_ecs\_fargate\_private\_link](#input\_enable\_ecs\_fargate\_private\_link) | Controls whether to create VPC Endpoints regarding AWS ECS with Fargate services in managed VPC | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name | `string` | `""` | no |
 | <a name="input_instance_tenancy"></a> [instance\_tenancy](#input\_instance\_tenancy) | A tenancy option for instances launched into the VPC | `string` | `"default"` | no |
+| <a name="input_ipv4_enabled"></a> [ipv4\_enabled](#input\_ipv4\_enabled) | Set `true` to enable IPv4 addresses in the subnets | `bool` | `true` | no |
+| <a name="input_ipv6_enabled"></a> [ipv6\_enabled](#input\_ipv6\_enabled) | Set `true` to enable IPv6 addresses in the subnets | `bool` | `false` | no |
 | <a name="input_map_public_ip_on_launch"></a> [map\_public\_ip\_on\_launch](#input\_map\_public\_ip\_on\_launch) | Instances launched into a public subnet should be assigned a public IP address | `bool` | `true` | no |
 | <a name="input_max_subnet_count"></a> [max\_subnet\_count](#input\_max\_subnet\_count) | Sets the maximum amount of subnets to deploy. 0 will deploy a subnet for every provided availablility zone (in `availability_zones` variable) within the region | `number` | `0` | no |
 | <a name="input_name"></a> [name](#input\_name) | Resource common name | `string` | n/a | yes |
@@ -126,7 +128,6 @@ Available targets:
 | <a name="output_vpc_default_security_group_id"></a> [vpc\_default\_security\_group\_id](#output\_vpc\_default\_security\_group\_id) | The ID of the security group created by default on VPC creation |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
 | <a name="output_vpc_ipv6_association_id"></a> [vpc\_ipv6\_association\_id](#output\_vpc\_ipv6\_association\_id) | The association ID for the IPv6 CIDR block |
-| <a name="output_vpc_ipv6_cidr"></a> [vpc\_ipv6\_cidr](#output\_vpc\_ipv6\_cidr) | The IPv6 CIDR block |
 | <a name="output_vpc_main_route_table_id"></a> [vpc\_main\_route\_table\_id](#output\_vpc\_main\_route\_table\_id) | The ID of the main route table associated with this VPC |
 | <a name="output_vpc_main_security_group_id"></a> [vpc\_main\_security\_group\_id](#output\_vpc\_main\_security\_group\_id) | The ID of the main security group associated with this VPC |
 <!-- markdownlint-restore -->

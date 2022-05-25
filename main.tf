@@ -1,5 +1,5 @@
 module "vpc" {
-  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=0.28.1"
+  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=1.1.0"
   name                           = var.name
   namespace                      = var.project
   stage                          = var.environment
@@ -42,27 +42,29 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=1.0.0"
+  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=2.0.2"
   name                         = var.name
   namespace                    = var.project
   stage                        = var.environment
   availability_zones           = var.azs
   vpc_id                       = module.vpc.vpc_id
-  igw_id                       = module.vpc.igw_id
-  cidr_block                   = var.cidr
+  igw_id                       = [module.vpc.igw_id]
+  ipv4_cidr_block              = [var.cidr]
   nat_gateway_enabled          = local.nat_gateway_enabled
   nat_instance_enabled         = local.nat_instance_enabled
   nat_instance_type            = var.nat_instance_type
   max_subnet_count             = var.max_subnet_count
   subnet_type_tag_key          = var.subnet_type_tag_key
   subnet_type_tag_value_format = var.subnet_type_tag_value_format
-  public_network_acl_id        = var.public_network_acl_id
-  private_network_acl_id       = var.private_network_acl_id
-  map_public_ip_on_launch      = var.map_public_ip_on_launch
-  tags                         = var.tags
+  map_public_ip_on_launch = var.map_public_ip_on_launch
+  tags                    = var.tags
 
-  public_subnets_additional_tags  = var.public_subnets_additional_tags
-  private_subnets_additional_tags = var.private_subnets_additional_tags
+  public_subnets_additional_tags          = var.public_subnets_additional_tags
+  private_subnets_additional_tags         = var.private_subnets_additional_tags
+  ipv6_enabled                            = true
+  ipv4_enabled                            = true
+  public_assign_ipv6_address_on_creation  = true
+  private_assign_ipv6_address_on_creation = true
 }
 
 module "label" {
