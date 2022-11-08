@@ -64,7 +64,7 @@ module "dynamic-subnets" {
   ipv6_enabled                            = var.ipv6_enabled
   ipv4_enabled                            = var.ipv4_enabled
   public_assign_ipv6_address_on_creation  = var.ipv6_enabled
-  private_assign_ipv6_address_on_creation = var.ipv4_enabled
+  private_assign_ipv6_address_on_creation = var.ipv6_enabled
 }
 
 module "label" {
