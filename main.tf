@@ -42,7 +42,7 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=2.0.2"
+  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=2.0.4"
   name                         = var.name
   namespace                    = var.project
   stage                        = var.environment

@@ -58,7 +58,7 @@ Available targets:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_dynamic-subnets"></a> [dynamic-subnets](#module\_dynamic-subnets) | git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git | 2.0.2 |
+| <a name="module_dynamic-subnets"></a> [dynamic-subnets](#module\_dynamic-subnets) | git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git | 2.0.4 |
 | <a name="module_label"></a> [label](#module\_label) | git::https://github.com/cloudposse/terraform-terraform-label | 0.8.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/cloudposse/terraform-aws-vpc.git | 1.1.0 |
 
