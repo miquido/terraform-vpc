@@ -47,7 +47,7 @@ output "vpc_default_security_group_id" {
 
 output "nat_gateway_ids" {
   description = "IDs of the NAT Gateways created"
-  value       = concat(module.dynamic-subnets.nat_gateway_ids, aws_nat_gateway.single-nat.*.id)
+  value       = module.dynamic-subnets.nat_gateway_ids
 }
 
 output "nat_instance_ids" {

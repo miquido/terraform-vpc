@@ -20,7 +20,7 @@ locals {
       nat_gateway_single_enabled = false
     }
     "gateway-single" = {
-      nat_gateway_enabled        = false
+      nat_gateway_enabled        = true
       nat_instance_enabled       = false
       nat_gateway_single_enabled = true
     }
@@ -42,7 +42,7 @@ locals {
 }
 
 module "dynamic-subnets" {
-  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=2.0.4"
+  source                       = "git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git?ref=2.1.0"
   name                         = var.name
   namespace                    = var.project
   stage                        = var.environment
@@ -53,6 +53,7 @@ module "dynamic-subnets" {
   nat_gateway_enabled          = local.nat_gateway_enabled
   nat_instance_enabled         = local.nat_instance_enabled
   nat_instance_type            = var.nat_instance_type
+  max_nats                     = local.nat_gateway_single_enabled ? 1 : 999
   max_subnet_count             = var.max_subnet_count
   subnet_type_tag_key          = var.subnet_type_tag_key
   subnet_type_tag_value_format = var.subnet_type_tag_value_format
