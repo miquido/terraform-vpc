@@ -18,8 +18,6 @@ include:
     - apk add python3
     - apk add --update py-pip
     - python3 -m venv venv
-#    - pip install virtualenv
-#    - virtualenv venv
     - source venv/bin/activate
     - pip install miquido_terraform_environments_check
     - python3 -m miquido_terraform_environments_check
