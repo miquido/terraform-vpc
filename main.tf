@@ -1,15 +1,11 @@
 module "vpc" {
-  source                         = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=1.1.0"
-  name                           = var.name
-  namespace                      = var.project
-  stage                          = var.environment
-  cidr_block                     = var.cidr
-  tags                           = var.tags
-  instance_tenancy               = var.instance_tenancy
-  enable_dns_hostnames           = true
-  enable_dns_support             = true
-  enable_classiclink             = false
-  enable_classiclink_dns_support = false
+  source                  = "git::https://github.com/cloudposse/terraform-aws-vpc.git?ref=2.1.1"
+  name                    = var.name
+  namespace               = var.project
+  stage                   = var.environment
+  ipv4_primary_cidr_block = var.cidr
+  tags                    = var.tags
+  instance_tenancy        = var.instance_tenancy
 }
 
 locals {
