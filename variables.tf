@@ -115,3 +115,9 @@ variable "ipv6_enabled" {
   description = "Set `true` to enable IPv6 addresses in the subnets"
   default     = false
 }
+
+variable "nat_elastic_ips" {
+  type        = list(string)
+  description = "Existing Elastic IPs (not EIP IDs) to attach to the NAT Gateway(s) or Instance(s) instead of creating new ones."
+  default     = []
+}

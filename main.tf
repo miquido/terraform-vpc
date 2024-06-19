@@ -51,6 +51,7 @@ module "dynamic-subnets" {
   nat_instance_type            = var.nat_instance_type
   max_nats                     = local.nat_gateway_single_enabled ? 1 : 999
   max_subnet_count             = var.max_subnet_count
+  nat_elastic_ips              = var.nat_elastic_ips
   subnet_type_tag_key          = var.subnet_type_tag_key
   subnet_type_tag_value_format = var.subnet_type_tag_value_format
   map_public_ip_on_launch      = var.map_public_ip_on_launch
