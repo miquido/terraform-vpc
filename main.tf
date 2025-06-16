@@ -20,6 +20,11 @@ locals {
       nat_instance_enabled       = false
       nat_gateway_single_enabled = true
     }
+    "instance-single" = {
+      nat_gateway_enabled        = false
+      nat_instance_enabled       = true
+      nat_gateway_single_enabled = true
+    }
     "instance-per-az" = {
       nat_gateway_enabled        = false
       nat_instance_enabled       = true
