@@ -1,3 +1,10 @@
+# [10.1.0](https://gitlab.miquido.com/miquido/terraform/terraform-vpc/compare/v10.0.9...v10.1.0) (2026-08-20)
+
+
+### Features
+
+* **deps:** update terraform cloudposse/vpc/aws to v3 ([b55edc2](https://gitlab.miquido.com/miquido/terraform/terraform-vpc/commit/b55edc26daa56d7c70adcb3d6324515df5622ecd))
+
 # 1.0.0 (2026-06-24)
 
 
