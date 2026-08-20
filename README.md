@@ -32,7 +32,7 @@ module "vpc" {
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.61.0 |
 
 ## Modules
 
@@ -40,7 +40,7 @@ module "vpc" {
 | ---- | ------ | ------- |
 | <a name="module_dynamic-subnets"></a> [dynamic-subnets](#module\_dynamic-subnets) | git::https://github.com/cloudposse/terraform-aws-dynamic-subnets.git | v3.1.1 |
 | <a name="module_label"></a> [label](#module\_label) | git::https://github.com/cloudposse/terraform-terraform-label | 0.8.0 |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | cloudposse/vpc/aws | 2.3.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | cloudposse/vpc/aws | 3.0.0 |
 
 ## Resources
 
