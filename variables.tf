@@ -122,6 +122,24 @@ variable "nat_elastic_ips" {
   default     = []
 }
 
+variable "flow_logs_enabled" {
+  type        = bool
+  default     = false
+  description = "Set `true` to enable VPC flow logs, delivered to a CloudWatch Logs log group"
+}
+
+variable "flow_logs_retention_in_days" {
+  type        = number
+  default     = 30
+  description = "Number of days to retain VPC flow log events in the CloudWatch Logs log group"
+}
+
+variable "flow_logs_traffic_type" {
+  type        = string
+  default     = "ALL"
+  description = "Type of traffic to capture in VPC flow logs. Valid values: ACCEPT, REJECT, ALL"
+}
+
 variable "nat_instance_ami_id" {
   type        = list(string)
   description = <<-EOT

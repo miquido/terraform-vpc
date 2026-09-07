@@ -46,6 +46,10 @@ module "vpc" {
 
 | Name | Type |
 | ---- | ---- |
+| [aws_cloudwatch_log_group.flow_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
+| [aws_flow_log.vpc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/flow_log) | resource |
+| [aws_iam_role.flow_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.flow_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_security_group.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group_rule.default-sg-allow-all-egress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.default-sg-allow-self-ingress](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule) | resource |
@@ -62,6 +66,9 @@ module "vpc" {
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | CIDR for the VPC | `string` | `"10.0.0.0/16"` | no |
 | <a name="input_enable_ecs_fargate_private_link"></a> [enable\_ecs\_fargate\_private\_link](#input\_enable\_ecs\_fargate\_private\_link) | Controls whether to create VPC Endpoints regarding AWS ECS with Fargate services in managed VPC | `bool` | `false` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Environment name | `string` | `""` | no |
+| <a name="input_flow_logs_enabled"></a> [flow\_logs\_enabled](#input\_flow\_logs\_enabled) | Set `true` to enable VPC flow logs, delivered to a CloudWatch Logs log group | `bool` | `false` | no |
+| <a name="input_flow_logs_retention_in_days"></a> [flow\_logs\_retention\_in\_days](#input\_flow\_logs\_retention\_in\_days) | Number of days to retain VPC flow log events in the CloudWatch Logs log group | `number` | `30` | no |
+| <a name="input_flow_logs_traffic_type"></a> [flow\_logs\_traffic\_type](#input\_flow\_logs\_traffic\_type) | Type of traffic to capture in VPC flow logs. Valid values: ACCEPT, REJECT, ALL | `string` | `"ALL"` | no |
 | <a name="input_instance_tenancy"></a> [instance\_tenancy](#input\_instance\_tenancy) | A tenancy option for instances launched into the VPC | `string` | `"default"` | no |
 | <a name="input_ipv4_enabled"></a> [ipv4\_enabled](#input\_ipv4\_enabled) | Set `true` to enable IPv4 addresses in the subnets | `bool` | `true` | no |
 | <a name="input_ipv6_enabled"></a> [ipv6\_enabled](#input\_ipv6\_enabled) | Set `true` to enable IPv6 addresses in the subnets | `bool` | `false` | no |
@@ -86,6 +93,7 @@ module "vpc" {
 | Name | Description |
 | ---- | ----------- |
 | <a name="output_availability_zones"></a> [availability\_zones](#output\_availability\_zones) | List of Availability Zones where subnets were created |
+| <a name="output_flow_logs_log_group_arn"></a> [flow\_logs\_log\_group\_arn](#output\_flow\_logs\_log\_group\_arn) | ARN of the CloudWatch Logs log group receiving VPC flow logs (empty if flow\_logs\_enabled is false) |
 | <a name="output_igw_id"></a> [igw\_id](#output\_igw\_id) | n/a |
 | <a name="output_nat_gateway_ids"></a> [nat\_gateway\_ids](#output\_nat\_gateway\_ids) | IDs of the NAT Gateways created |
 | <a name="output_nat_instance_ids"></a> [nat\_instance\_ids](#output\_nat\_instance\_ids) | IDs of the NAT Instances created |

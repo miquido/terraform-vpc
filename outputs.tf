@@ -90,3 +90,8 @@ output "availability_zones" {
   description = "List of Availability Zones where subnets were created"
   value       = module.dynamic-subnets.availability_zones
 }
+
+output "flow_logs_log_group_arn" {
+  description = "ARN of the CloudWatch Logs log group receiving VPC flow logs (empty if flow_logs_enabled is false)"
+  value       = one(aws_cloudwatch_log_group.flow_logs[*].arn)
+}
