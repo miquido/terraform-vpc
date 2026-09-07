@@ -1,3 +1,10 @@
+# [10.2.0](https://gitlab.miquido.com/miquido/terraform/terraform-vpc/compare/v10.1.0...v10.2.0) (2026-09-07)
+
+
+### Features
+
+* add optional VPC flow logs support ([99afba5](https://gitlab.miquido.com/miquido/terraform/terraform-vpc/commit/99afba5c63e25683ce2319e0b71ac4cc8b434535))
+
 # [10.1.0](https://gitlab.miquido.com/miquido/terraform/terraform-vpc/compare/v10.0.9...v10.1.0) (2026-08-20)
 
 
