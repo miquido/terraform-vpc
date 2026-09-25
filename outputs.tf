@@ -40,6 +40,16 @@ output "vpc_default_network_acl_id" {
   description = "The ID of the network ACL created by default on VPC creation"
 }
 
+output "public_network_acl_id" {
+  value       = module.dynamic-subnets.public_network_acl_id
+  description = "The ID of the network ACL created for the public subnets (null if open_network_acl is disabled)"
+}
+
+output "private_network_acl_id" {
+  value       = module.dynamic-subnets.private_network_acl_id
+  description = "The ID of the network ACL created for the private subnets (null if open_network_acl is disabled)"
+}
+
 output "vpc_default_security_group_id" {
   value       = module.vpc.vpc_default_security_group_id
   description = "The ID of the security group created by default on VPC creation"
