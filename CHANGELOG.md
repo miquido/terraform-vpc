@@ -1,3 +1,10 @@
+# [10.3.0](https://gitlab.miquido.com/miquido/terraform/terraform-vpc/compare/v10.2.0...v10.3.0) (2026-09-25)
+
+
+### Features
+
+* add public_network_acl_id and private_network_acl_id outputs ([289cf31](https://gitlab.miquido.com/miquido/terraform/terraform-vpc/commit/289cf3174f9e8b7c4b8d37760651d16ccc71530a))
+
 # [10.2.0](https://gitlab.miquido.com/miquido/terraform/terraform-vpc/compare/v10.1.0...v10.2.0) (2026-09-07)
 
 
